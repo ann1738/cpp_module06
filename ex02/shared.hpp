@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   shared.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 12:54:07 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by anasr            ###   ########.fr       */
+/*   Created: 2022/06/01 14:24:54 by anasr             #+#    #+#             */
+/*   Updated: 2022/06/01 16:01:02 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#ifndef SHARED_HPP
+# define SHARED_HPP
 
-int	main(void)
-{
-	Data *data = new Data;
-	uintptr_t newPtr;
+#include "A.hpp"
+#include "Base.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <exception>
 
-	std::cout << "\e[32mThe Data object BEFORE serializing and deserializing\e[0m\n";
-	data->printData();
+Base *	generate(void);
+void 	identify(Base* p);
+void 	identify(Base& p);
 
-	newPtr = serialize(data);
-	data = deserialize(newPtr);
-
-	std::cout << "\e[32mThe copy Data object AFTER serializing and deserializing\e[0m\n";
-	data->printData();
-
-	delete data;
-}
+#endif

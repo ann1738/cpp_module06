@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 12:54:07 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by anasr            ###   ########.fr       */
+/*   Created: 2022/06/01 13:57:29 by anasr             #+#    #+#             */
+/*   Updated: 2022/06/01 14:00:15 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "Base.hpp"
 
-int	main(void)
+/******************* Destructor *********************/
+
+Base::~Base()
 {
-	Data *data = new Data;
-	uintptr_t newPtr;
-
-	std::cout << "\e[32mThe Data object BEFORE serializing and deserializing\e[0m\n";
-	data->printData();
-
-	newPtr = serialize(data);
-	data = deserialize(newPtr);
-
-	std::cout << "\e[32mThe copy Data object AFTER serializing and deserializing\e[0m\n";
-	data->printData();
-
-	delete data;
+	std::cout << "Base: Destructor is called\n";
 }

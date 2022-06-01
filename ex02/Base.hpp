@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 12:54:07 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by anasr            ###   ########.fr       */
+/*   Created: 2022/06/01 13:57:19 by anasr             #+#    #+#             */
+/*   Updated: 2022/06/01 13:57:45 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
-int	main(void)
+#include <iostream>
+
+class	Base
 {
-	Data *data = new Data;
-	uintptr_t newPtr;
+public:
+/******************Destructor********************/
+	virtual ~Base();
+};
 
-	std::cout << "\e[32mThe Data object BEFORE serializing and deserializing\e[0m\n";
-	data->printData();
-
-	newPtr = serialize(data);
-	data = deserialize(newPtr);
-
-	std::cout << "\e[32mThe copy Data object AFTER serializing and deserializing\e[0m\n";
-	data->printData();
-
-	delete data;
-}
+#endif

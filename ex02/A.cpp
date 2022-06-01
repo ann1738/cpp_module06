@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 12:54:07 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by anasr            ###   ########.fr       */
+/*   Created: 2022/06/01 13:57:29 by anasr             #+#    #+#             */
+/*   Updated: 2022/06/01 13:57:32 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "A.hpp"
 
-int	main(void)
+/******************* Destructor *********************/
+
+A::~A()
 {
-	Data *data = new Data;
-	uintptr_t newPtr;
-
-	std::cout << "\e[32mThe Data object BEFORE serializing and deserializing\e[0m\n";
-	data->printData();
-
-	newPtr = serialize(data);
-	data = deserialize(newPtr);
-
-	std::cout << "\e[32mThe copy Data object AFTER serializing and deserializing\e[0m\n";
-	data->printData();
-
-	delete data;
+	std::cout << "A: Destructor is called\n";
 }

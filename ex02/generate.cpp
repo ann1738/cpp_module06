@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   generate.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 12:54:07 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 13:54:12 by anasr            ###   ########.fr       */
+/*   Created: 2022/06/01 14:04:06 by anasr             #+#    #+#             */
+/*   Updated: 2022/06/01 15:52:18 by anasr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Data.hpp"
+#include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
+#include <ctime>
 
-int	main(void)
+Base * generate(void)
 {
-	Data *data = new Data;
-	uintptr_t newPtr;
-
-	std::cout << "\e[32mThe Data object BEFORE serializing and deserializing\e[0m\n";
-	data->printData();
-
-	newPtr = serialize(data);
-	data = deserialize(newPtr);
-
-	std::cout << "\e[32mThe copy Data object AFTER serializing and deserializing\e[0m\n";
-	data->printData();
-
-	delete data;
+	Base * Ptr = NULL;
+	srand(std::time(nullptr));
+	switch (rand() % 10)
+	{
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			Ptr = new A;
+			break ;
+		case 4:
+		case 5:
+		case 6:
+			Ptr = new B;
+			break ;
+		case 7:
+		case 8:
+		case 9:
+			Ptr = new C;
+			break ;
+	}
+	return (Ptr);
 }
