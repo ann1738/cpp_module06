@@ -1,5 +1,5 @@
 NAME = convert
-SRC = main.cpp convException.cpp
+SRC = main.cpp convException.cpp Data.cpp
 OBJ = $(SRC:%.cpp=%.o)
 CXX = c++
 CPPFLAGS = -Wall -Werror -Wextra -c -std=c++98
