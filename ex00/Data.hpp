@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:00:31 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/03 19:14:48 by anasr            ###   ########.fr       */
+/*   Updated: 2022/06/05 12:28:39 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <math.h>
 #include <sstream>
+#include <climits>
 #include "convException.hpp"
 
 class	Data
@@ -27,6 +28,11 @@ private:
 	int		i;
 	float	f;
 	double	d;
+
+	bool	iNotOk;
+	bool	fNotOk;
+	bool	dNotOk;
+	
 
 	bool	checkInt(std::string const & input);
 	bool	checkFloat(std::string const & input);
