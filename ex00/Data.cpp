@@ -6,7 +6,7 @@
 /*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:04:05 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/05 13:05:05 by ann              ###   ########.fr       */
+/*   Updated: 2022/06/06 10:17:11 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,16 @@ bool	Data::checkInt(std::string const & input)
 
 bool	Data::checkFloat(std::string const & input)
 {
-	/* checking special numeric limits */
-	double		f = atof(input.c_str());
-	if ((isnan(f) || isinf(f)) && input[3] == 'f')
-	{	
-		if ((input.compare(0, 4, "nanf") || input.compare(0, 4, "inff")) && input[4]) return (false);
-		if (((input.compare(0, 3, "nan") && !input.compare("nanf")) || (input.compare(0, 3, "inf") && !input.compare("inff"))) && input[3]) return (false);
-		return (true);
-	}
-
 	int i = 0;
 	if (input[i] == '+' || input[i] == '-') ++i;
+	/* checking special numeric limits */
+	double		temp = atof(input.c_str());
+	if ((isnan(temp) || isinf(temp)))
+	{
+		if (input == "nanf" || input == "inff" || input == "+inff" || input == "-inff") return (true);
+		return (false);
+	}
+
 	for(; isdigit(input[i]); ++i);
 	if (input[i] != '.') return (false);
 	for(++i; isdigit(input[i]); ++i);
@@ -103,12 +102,11 @@ bool	Data::checkFloat(std::string const & input)
 bool	Data::checkDouble(std::string const & input)
 {
 	/* checking special numeric limits */
-	double		d = atof(input.c_str());
-	if ((isnan(d) || isinf(d)))
+	double		temp = atof(input.c_str());
+	if ((isnan(temp) || isinf(temp)))
 	{
-		if ((input.compare(0, 4, "nanf") || input.compare(0, 4, "inff")) && input[4]) return (false);
-		if ((input.compare(0, 3, "nan") || input.compare(0, 3, "inf")) && input[3]) return (false);
-		return (true);
+		if (input == "nan" || input == "inf" || input == "+inf" || input == "-inf") return (true);
+		return (false);
 	}
 
 	int i = 0;
@@ -124,7 +122,6 @@ bool	Data::checkDouble(std::string const & input)
 
 void	Data::itsInt(std::string const & input)
 {
-	std::cout << "INT\n";
 	std::stringstream ss;
 	ss << input;
 	if (!(ss >> i)) throw convException("\e[31mInvalid integer underflow/overflow\e[0m\n");
@@ -135,32 +132,24 @@ void	Data::itsInt(std::string const & input)
 
 void	Data::itsFloat(std::string const & input)
 {
-	std::cout << "FLOAT\n";
 	std::stringstream ss;
-	long long	iCheck;
 	ss << input;
 	ss >> f;
-	f = static_cast<float>(atof(input.c_str()));		
+	f = static_cast<float>(atof(input.c_str()));
 	c = static_cast<char>(f);
-	iCheck = static_cast<long long>(f);
-	std::cout << iCheck << std::endl;
-	if ((iCheck > INT_MAX || iCheck < INT_MIN))	iNotOk = true;
+	if ((atof(input.c_str()) > static_cast<double>(INT_MAX) || atof(input.c_str()) < static_cast<double>(INT_MIN)))	iNotOk = true;	
 	i = static_cast<int>(f);
 	d = static_cast<double>(f);
 }
 
 void	Data::itsDouble(std::string const & input)
 {
-	std::cout << "DOUBLE\n";
 	std::stringstream ss;
-	long long	iCheck;
 	ss << input;
 	ss >> d;
 	d = atof(input.c_str());
 	c = static_cast<char>(d);
-	iCheck = static_cast<long long>(f);
-	std::cout << iCheck << std::endl;
-	if ((iCheck > INT_MAX || iCheck < INT_MIN))	iNotOk = true;
+	if ((d > static_cast<double>(INT_MAX) || d < static_cast<double>(INT_MIN)))	iNotOk = true;
 	i = static_cast<int>(d);
 	f = static_cast<float>(d);
 }
