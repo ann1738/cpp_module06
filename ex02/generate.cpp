@@ -3,24 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   generate.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anasr <anasr@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 14:04:06 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/01 15:52:18 by anasr            ###   ########.fr       */
+/*   Updated: 2022/06/07 08:16:20 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
-#include <ctime>
+#include "shared.hpp"
 
 Base * generate(void)
 {
 	Base * Ptr = NULL;
-	srand(std::time(nullptr));
-	switch (rand() % 10)
+	switch (std::rand() % 10)
 	{
 		case 0:
 		case 1:

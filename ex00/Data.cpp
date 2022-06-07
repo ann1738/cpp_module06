@@ -6,7 +6,7 @@
 /*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:04:05 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/06 10:17:11 by ann              ###   ########.fr       */
+/*   Updated: 2022/06/07 09:40:49 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Data::Data(std::string input)
 }
 
 Data::Data(const Data& original)
- : c(original.c), i(original.i), f(original.f), d(original.d)
+ : c(original.c), i(original.i), f(original.f), d(original.d), iNotOk(original.iNotOk)
 {
 	// std::cout << "Data: Copy constructor is called\n";
 }
@@ -49,6 +49,7 @@ Data& Data::operator=(const Data& original)
 		i = original.i;
 		f = original.f;
 		d = original.d;
+		iNotOk = original.iNotOk;
 	}
 	return (*this);
 }
@@ -82,8 +83,6 @@ bool	Data::checkInt(std::string const & input)
 
 bool	Data::checkFloat(std::string const & input)
 {
-	int i = 0;
-	if (input[i] == '+' || input[i] == '-') ++i;
 	/* checking special numeric limits */
 	double		temp = atof(input.c_str());
 	if ((isnan(temp) || isinf(temp)))
@@ -92,6 +91,8 @@ bool	Data::checkFloat(std::string const & input)
 		return (false);
 	}
 
+	int i = 0;
+	if (input[i] == '+' || input[i] == '-') ++i;
 	for(; isdigit(input[i]); ++i);
 	if (input[i] != '.') return (false);
 	for(++i; isdigit(input[i]); ++i);

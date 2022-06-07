@@ -6,7 +6,7 @@
 /*   By: ann <ann@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 19:00:31 by anasr             #+#    #+#             */
-/*   Updated: 2022/06/05 12:28:39 by ann              ###   ########.fr       */
+/*   Updated: 2022/06/07 09:37:24 by ann              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <math.h>
+#include <cmath>
 #include <sstream>
 #include <climits>
 #include "convException.hpp"
@@ -30,9 +29,6 @@ private:
 	double	d;
 
 	bool	iNotOk;
-	bool	fNotOk;
-	bool	dNotOk;
-	
 
 	bool	checkInt(std::string const & input);
 	bool	checkFloat(std::string const & input);
