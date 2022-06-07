@@ -43,4 +43,3 @@ void	Data::printData(void)
 			  << "myChar is " << myChar << std::endl
 			  << "myString is " << myString << std::endl;
 }
-

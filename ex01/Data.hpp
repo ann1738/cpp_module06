@@ -3,9 +3,7 @@
 
 #include <iostream>
 #include <string>
-/* check this pls */
-#include <stdint.h>
-/**/
+// #include <stdint.h>
 
 class	Data
 {
